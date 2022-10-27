@@ -1,0 +1,150 @@
+../src/loadStockData.c:7:19: Global head initialized to null value: head = NULL
+  A reference with no null annotation is assigned or initialized to NULL.  Use
+  /*@null@*/ to declare the reference as a possibly null pointer. (Use
+  -nullassign to inhibit warning)
+../src/loadStockData.c:7:19: Global head initialized to null value:
+                                struct NODE * head = NULL = NULL
+../src/loadStockData.c:8:19: Global node initialized to null value: node = NULL
+../src/loadStockData.c:8:19: Global node initialized to null value:
+                                struct NODE * node = NULL = NULL
+../src/loadStockData.c: (in function loadStockData)
+../src/loadStockData.c:23:25: Arrow access from possibly null pointer node:
+                                 node->date
+  A possibly null pointer is dereferenced.  Value is either the result of a
+  function which may return null (in which case, code should check it is not
+  null), or a global, parameter or structure field declared with the null
+  qualifier. (Use -nullderef to inhibit warning)
+   ../src/loadStockData.c:20:16: Storage node may become null
+../src/loadStockData.c:25:33: Possibly null storage lOpen passed as non-null
+                                 param: strncpy (..., lOpen, ...)
+  A possibly null pointer is passed as a parameter corresponding to a formal
+  parameter with no /*@null@*/ annotation.  If NULL may be used for this
+  parameter, add a /*@null@*/ annotation to the function parameter declaration.
+  (Use -nullpass to inhibit warning)
+   ../src/loadStockData.c:24:23: Storage lOpen may become null
+../src/loadStockData.c:27:33: Possibly null storage lHigh passed as non-null
+                                 param: strncpy (..., lHigh, ...)
+   ../src/loadStockData.c:26:23: Storage lHigh may become null
+../src/loadStockData.c:29:32: Possibly null storage lLow passed as non-null
+                                 param: strncpy (..., lLow, ...)
+   ../src/loadStockData.c:28:22: Storage lLow may become null
+../src/loadStockData.c:31:34: Possibly null storage lClose passed as non-null
+                                 param: strncpy (..., lClose, ...)
+   ../src/loadStockData.c:30:24: Storage lClose may become null
+../src/loadStockData.c:33:37: Possibly null storage lAdjClose passed as
+                                 non-null param: strncpy (..., lAdjClose, ...)
+   ../src/loadStockData.c:32:27: Storage lAdjClose may become null
+../src/loadStockData.c:35:35: Possibly null storage lVolume passed as non-null
+                                 param: strncpy (..., lVolume, ...)
+   ../src/loadStockData.c:34:25: Storage lVolume may become null
+../src/loadStockData.c:36:9: Unqualified storage head assigned to implicitly
+                                only: node->next = head
+  Unqualified storage is transferred in an inconsistent way. (Use
+  -unqualifiedtrans to inhibit warning)
+../src/loadStockData.c:38:5: Variable node is dependent in while body, but
+                                independent if loop is not taken.
+  The state of a variable is different depending on which branch is taken. This
+  means no annotation can sensibly be applied to the storage. (Use -branchstate
+  to inhibit warning)
+   ../src/loadStockData.c:38:5: in while body:
+   ../src/loadStockData.c:37:9: Storage node becomes dependent
+../src/loadStockData.c:45:9: Only storage head->next assigned to unqualified:
+                                head = head->next
+  The only reference to this storage is transferred to another reference (e.g.,
+  by returning it) that does not have the only annotation. This may lead to a
+  memory leak, since the new reference is not necessarily released. (Use
+  -onlytrans to inhibit warning)
+../src/loadStockData.c:57:2: Function returns with global node referencing
+                                released storage
+  A global variable does not satisfy its annotations when control is
+  transferred. (Use -globstate to inhibit warning)
+   ../src/loadStockData.c:54:14: Storage node released
+../src/loadStockData.c:57:2: Function returns with global head referencing
+                                released storage
+   ../src/loadStockData.c:54:14: Storage head released
+../src/loadStockData.c:57:2: Function returns with non-null global head
+                                referencing null storage
+../src/main.c: (in function main)
+../src/main.c:10:11: Test expression for while not boolean, type int: 1
+  Test expression type is not boolean or int. (Use -predboolint to inhibit
+  warning)
+../src/main.c:14:13: Null storage fptr passed as non-null param: fclose (fptr)
+   ../src/main.c:11:17: Storage fptr becomes null
+../src/main.c:14:6: Return value (type int) ignored: fclose(fptr)
+  Result returned by function call is not used. If this is intended, can cast
+  result to (void) to eliminate message. (Use -retvalint to inhibit warning)
+../src/main.c:19:5: Return value (type int) ignored: scanf("%d", &val)
+../src/selectChoice.c: (in function selectChoice)
+../src/selectChoice.c:9:11: Test expression for while not boolean, type int: 1
+../src/selectChoice.c:10:5: Return value (type int) ignored: system("clear")
+../src/selectChoice.c:11:5: Return value (type int) ignored: fflush(stdin)
+../src/selectChoice.c:16:5: Return value (type int) ignored:
+                               scanf("%d", &choice)
+../src/selectChoice.c:22:9: Dependent storage assigned to unqualified:
+                               *fptr = fopen("../data/ajanta.csv", "r")
+  Dependent storage is transferred to a non-dependent reference. (Use
+  -dependenttrans to inhibit warning)
+../src/selectChoice.c:23:16: Function returns with possibly null storage
+                                derivable from parameter *fptr
+  A possibly null pointer is reachable from a parameter or global variable that
+  is not declared using a /*@null@*/ annotation. (Use -nullstate to inhibit
+  warning)
+   ../src/selectChoice.c:22:16: Storage *fptr may become null
+../src/selectChoice.c:26:9: Dependent storage assigned to unqualified:
+                               *fptr = fopen("../data/bajaj.csv", "r")
+../src/selectChoice.c:27:16: Function returns with possibly null storage
+                                derivable from parameter *fptr
+   ../src/selectChoice.c:26:16: Storage *fptr may become null
+../src/selectChoice.c:30:9: Dependent storage assigned to unqualified:
+                               *fptr = fopen("../data/cipla.csv", "r")
+../src/selectChoice.c:31:16: Function returns with possibly null storage
+                                derivable from parameter *fptr
+   ../src/selectChoice.c:30:16: Storage *fptr may become null
+../src/selectChoice.c:34:9: Dependent storage assigned to unqualified:
+                               *fptr = fopen("../data/godrej.csv", "r")
+../src/selectChoice.c:35:16: Function returns with possibly null storage
+                                derivable from parameter *fptr
+   ../src/selectChoice.c:34:16: Storage *fptr may become null
+../src/selectChoice.c:38:9: Dependent storage assigned to unqualified:
+                               *fptr = fopen("../data/goodyear.csv", "r")
+../src/selectChoice.c:39:16: Function returns with possibly null storage
+                                derivable from parameter *fptr
+   ../src/selectChoice.c:38:16: Storage *fptr may become null
+../src/selectChoice.c:42:9: Dependent storage assigned to unqualified:
+                               *fptr = fopen("../data/havelles.csv", "r")
+../src/selectChoice.c:43:16: Function returns with possibly null storage
+                                derivable from parameter *fptr
+   ../src/selectChoice.c:42:16: Storage *fptr may become null
+../src/selectChoice.c:46:9: Dependent storage assigned to unqualified:
+                               *fptr = fopen("../data/hdfc.csv", "r")
+../src/selectChoice.c:47:16: Function returns with possibly null storage
+                                derivable from parameter *fptr
+   ../src/selectChoice.c:46:16: Storage *fptr may become null
+../src/selectChoice.c:50:9: Dependent storage assigned to unqualified:
+                               *fptr = fopen("../data/muthoot.csv", "r")
+../src/selectChoice.c:51:16: Function returns with possibly null storage
+                                derivable from parameter *fptr
+   ../src/selectChoice.c:50:16: Storage *fptr may become null
+../src/selectChoice.c:54:9: Dependent storage assigned to unqualified:
+                               *fptr = fopen("../data/ongc.csv", "r")
+../src/selectChoice.c:55:16: Function returns with possibly null storage
+                                derivable from parameter *fptr
+   ../src/selectChoice.c:54:16: Storage *fptr may become null
+../src/selectChoice.c:58:9: Dependent storage assigned to unqualified:
+                               *fptr = fopen("../data/raymond.csv", "r")
+../src/selectChoice.c:59:16: Function returns with possibly null storage
+                                derivable from parameter *fptr
+   ../src/selectChoice.c:58:16: Storage *fptr may become null
+../src/showReco.c: (in function showReco)
+../src/showReco.c:10:13: Operands of < have incompatible types (int, float):
+                            i < (float)50
+  To allow all numeric types to match, use +relaxtypes.
+../src/showReco.c:11:12: Operands of < have incompatible types (int, float):
+                            i < (float)10
+../src/loadStockData.c:7:14: Variable exported but not used outside
+                                loadStockData: head
+  A declaration is exported, but not used outside this module. Declaration can
+  use static qualifier. (Use -exportlocal to inhibit warning)
+../src/loadStockData.c:8:14: Variable exported but not used outside
+                                loadStockData: node
+
