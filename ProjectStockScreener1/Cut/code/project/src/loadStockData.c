@@ -13,7 +13,6 @@ struct NODE *node=NULL;
 /*load data into the linked list*/
 void loadStockData(FILE** fptr){
   
-    int count=0;
     char parsedLine[PARSEDLEN];
     int row = 0;
      while(fgets(parsedLine,PARSEDLEN,*fptr) != NULL){
@@ -45,12 +44,11 @@ void loadStockData(FILE** fptr){
    
     struct NODE* avghead= head;
     printf("Date\t\tOpen\t\tHigh\t\tLow\t\tClose\t\tAdj Close\tVolume\n\n");
-    while(head!=NULL && count < 10 ){
+    while(head!=NULL){
         printf("%s\t%s\t%s\t%s\t%s\t%s\t%d\n",head->date,head->open,head->high,head->low,head->close,head->adjClose,atoi(head->volume));
         head=head->next;
-        count++;
     }
-    count=0;
+ 
 /*shows the recommendation*/
     showReco(avghead);
 
